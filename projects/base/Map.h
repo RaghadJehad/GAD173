@@ -1,12 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+#define X_Lines 21
+#define Y_Lines 7
+
 class Map
 {
 public:
 	Map();
 	~Map();
-
+	void Load();
+	
 	sf::Texture* blockRTexture;
 	sf::Texture* blockBTexture;
 	sf::Texture* blockGTexture;
@@ -25,5 +29,6 @@ public:
 		1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 2, 2, 2, 0, 2, 2, 2,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	};
+	//void Render(sf::RenderWindow& window);
 };
 

@@ -21,26 +21,15 @@ bool Example::start()
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
 	
-	map.blockRTexture = kage::TextureManager::getTexture("data/red.png");
-	
-	for (size_t y = 0; y < 7; y++)
-	{
-		for (size_t x = 0; x < 21; x++)
-		{
-			int i = x + y * 21;
-			
-			if (map[i] == 0)
-			{
-				map.tiles[i].setTexture(*map.redBlock);
-			}
-		}
-	}
 	return true;
 	
 }
 
 void Example::update(float deltaT)
 {
+	sf::Vector2i mousePosition = sf::Mouse::getPosition(m_window);
+	std::cout << mousePosition.x << " " << mousePosition.y << std::endl;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && m_window.hasFocus())
 	{
 		m_running = false;
@@ -57,9 +46,14 @@ void Example::update(float deltaT)
 void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
-	m_window.draw(map.redBlock);
-	
 	grid.Render(m_window);
+	m_window.draw(map.redBlock);
+
+	for (size_t i = 0; i < 147; i++)
+	{
+		m_window.draw(map.tiles[i]);
+	}
+	//map.Render(m_window);
 }
 
 void Example::cleanup()

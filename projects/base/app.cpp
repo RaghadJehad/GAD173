@@ -1,5 +1,4 @@
 #include "app.h"
-
 #include "SFML/Graphics.hpp"
 #include "kage2dutil/system.h"
 #include "kage2dutil/imgui.h"
@@ -23,7 +22,7 @@ bool App::init()
 	kf::LogSystem::getDefault().addFile("base.log");
 	kf_log("Started");
 
-	m_window.create(sf::VideoMode(1920, 1080, 32), "Kage2D");
+	m_window.create(sf::VideoMode(1280, 960, 32), "Kage2D");
 	m_window.setFramerateLimit(60);
 	
 	if (!m_font.loadFromFile("data/bluehigh.ttf"))

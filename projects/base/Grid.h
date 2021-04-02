@@ -1,8 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-#define Y_Spacing 35
-#define	X_Spacing 35
+#define Cell_Height 35
+#define	Cell_Width 35
+#define Grid_OFFSET_X 50
+#define Grid_OFFSET_Y 100
 
 class Grid
 {

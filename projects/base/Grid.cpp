@@ -8,13 +8,13 @@ using namespace std;
 	 for (size_t i = 0; i < 21; i++)
 	 {
 		 lineH[i].setSize(sf::Vector2f(700, 1));
-		 lineH[i].setPosition(sf::Vector2f(0, 0 + i *Y_Spacing));
+		 lineH[i].setPosition(sf::Vector2f(Grid_OFFSET_X, Grid_OFFSET_Y + i *Cell_Height));
 		 
 	 }
 	 for (size_t i = 0; i < 21; i++)
 	 {
 		 lineV[i].setSize(sf::Vector2f(1, 700));
-		 lineV[i].setPosition(sf::Vector2f(0 + i * X_Spacing, 0));
+		 lineV[i].setPosition(sf::Vector2f(Grid_OFFSET_X + i *Cell_Width, Grid_OFFSET_Y));
 	 }
 }
 
