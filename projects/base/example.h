@@ -2,6 +2,7 @@
 #include "Grid.h"
 #include "app.h"
 #include "Map.h"
+#include "SaveLoad.h"
 
 class Example : public App
 {
@@ -15,7 +16,6 @@ public:
 	static Example &inst();
 
 	sf::Sprite *m_backgroundSprite;
-	
 	Map map;
 	Grid grid;
 };
