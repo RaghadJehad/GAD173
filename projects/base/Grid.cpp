@@ -9,7 +9,6 @@ using namespace std;
 	 {
 		 lineH[i].setSize(sf::Vector2f(H_Lines_X, H_Lines_Y));
 		 lineH[i].setPosition(sf::Vector2f(Grid_OFFSET_X, Grid_OFFSET_Y + i *Cell_Height));
-		 
 	 }
 	 for (size_t i = 0; i < V_ARRAY; i++)
 	 {

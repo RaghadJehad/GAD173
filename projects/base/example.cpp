@@ -1,5 +1,6 @@
 #include "example.h"
 #include <string>
+
 using namespace std;
 
 Example::Example(): App()
@@ -22,6 +23,7 @@ bool Example::start()
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
 	map.Load();
+	
 	/*string line = "GAME OVER MUSTAFA HAHA xD !!!!!";
 	string numStr1 = line.substr(0, 4);
 	string numStr2 = line.substr(5, 4);
@@ -37,9 +39,8 @@ bool Example::start()
 	std::cout << numStr6 << std::endl;
 	std::cout << numStr7 << std::endl;
 	*/
-	
+
 	return true;
-	
 }
 
 void Example::update(float deltaT)
@@ -67,9 +68,13 @@ void Example::update(float deltaT)
 		map.chosenTileID = 3;
 	}
 	if (ImGui::Button("Save"))
-	{
-		      //filename, nullptr or void pointer, length of x,y
+	{  
 		SaveLoad::Save("map.txt", map.map, 21, 21);
+	}
+	if(ImGui::Button("Load"))
+	{
+		SaveLoad::Load("map.txt", Map_Size, map);
+		map.Load();
 	}
 	ImGui::End();
 
@@ -98,8 +103,8 @@ void Example::update(float deltaT)
 			map.tiles[i].setTexture(*map.blockGTexture);
 			map.map[i] = 3;
 		}
-		std::cout << mousePosition.x << " " << mousePosition.y << " "
-			<< mouseOnCellX << " " << mouseOnCellY << std::endl;
+	
+		std::cout << mouseOnCellX << " " << mouseOnCellY << std::endl;
 	}
 }
 	
@@ -108,9 +113,8 @@ void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
 	grid.Render(m_window);
-	//m_window.draw(map.redBlock);
 
-	for (size_t i = 0; i < 441; i++)
+	for (size_t i = 0; i < Map_Size; i++)
 	{
 		m_window.draw(map.tiles[i]);
 	}
