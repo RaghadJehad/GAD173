@@ -21,9 +21,10 @@ class Grid
 {
 public:
 	Grid();
-	~Grid();
-	
+	~Grid();	
 	void Render(sf::RenderWindow& window);
+
+private:
 	sf::RectangleShape lineH[H_ARRAY];
 	sf::RectangleShape lineV[V_ARRAY];
 };

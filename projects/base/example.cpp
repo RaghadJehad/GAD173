@@ -23,7 +23,8 @@ bool Example::start()
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
 	map.Load();
-	
+	animator.Init();
+	animator.LoadTexture();
 	/*string line = "GAME OVER MUSTAFA HAHA xD !!!!!";
 	string numStr1 = line.substr(0, 4);
 	string numStr2 = line.substr(5, 4);
@@ -106,6 +107,7 @@ void Example::update(float deltaT)
 	
 		std::cout << mouseOnCellX << " " << mouseOnCellY << std::endl;
 	}
+	animator.Update();
 }
 	
 
@@ -113,7 +115,7 @@ void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
 	grid.Render(m_window);
-
+	animator.Render(m_window);
 	for (size_t i = 0; i < Map_Size; i++)
 	{
 		m_window.draw(map.tiles[i]);
