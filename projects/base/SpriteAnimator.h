@@ -7,12 +7,11 @@ private:
 	sf::Texture* brickAnimation;
 	sf::Sprite BreakoutSheet;
 	sf::Clock clock;
-	int indexX = 0;
-	int indexY = 1;
-	sf::Vector2f startFrame;
-	sf::Vector2f endFrame;
+	
+	sf::Vector2i startFrame; //vector2i for int
+	sf::Vector2i endFrame;
 	int speed;
-	sf::Vector2f currentFrame;
+	sf::Vector2i currentFrame;
 	bool startAnimation = false;
 
 public:
@@ -22,7 +21,7 @@ public:
 	void Render(sf::RenderWindow& window);
 	void Init();
 	void LoadTexture();
-	void StartAnimation(sf::Vector2f startFrame, sf::Vector2f endFrame, int speed);
+	void StartAnimation(sf::Vector2i startFrame, sf::Vector2i endFrame, int speed);
 
 };
 

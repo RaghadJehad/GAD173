@@ -23,7 +23,7 @@ void SpriteAnimator::LoadTexture()
 	BreakoutSheet.setTextureRect(sf::IntRect(0, 0, BrickWidth, BrickHeight));
 }
 
-void SpriteAnimator::StartAnimation(Vector2f startFrame, Vector2f endFrame, int speed)
+void SpriteAnimator::StartAnimation(Vector2i startFrame, Vector2i endFrame, int speed)
 {
 	this->startFrame = startFrame; //''this'' declares the var equal to with same name
 	this->endFrame = endFrame; //''->'' deref. 
@@ -34,20 +34,24 @@ void SpriteAnimator::StartAnimation(Vector2f startFrame, Vector2f endFrame, int 
 
 void SpriteAnimator::Update()
 {
-	Time timer = clock.getElapsedTime();
-	
-	if (timer.asMilliseconds() > 120) 
+	if (startAnimation)
 	{
-		int x = BrickWidth * indexX;
-		int y = BrickHeight * indexY;
-		
-		BreakoutSheet.setTextureRect(sf::IntRect(x, y, BrickWidth, BrickHeight));
-		indexX++; //every frame it increments by 1
+		Time timer = clock.getElapsedTime();
 
-		if (indexX >= 6) {
-			indexX = 0;
+		if (timer.asMilliseconds() > speed)
+		{
+			int x = BrickWidth * currentFrame.x;
+			int y = BrickHeight * currentFrame.y;
+
+			BreakoutSheet.setTextureRect(sf::IntRect(x, y, BrickWidth, BrickHeight));
+			currentFrame.x++; //every frame it increments by 1
+
+			if (currentFrame.x >= endFrame.x) 
+			{
+				currentFrame = startFrame;
+			}
+			clock.restart();
 		}
-		clock.restart();
 	}
 }
 
