@@ -25,6 +25,7 @@ bool Example::start()
 	map.Load();
 	animator.Init();
 	animator.LoadTexture();
+	animator.StartAnimation(sf::Vector2i(0, 1), sf::Vector2i(6, 0), 120);
 	/*string line = "GAME OVER MUSTAFA HAHA xD !!!!!";
 	string numStr1 = line.substr(0, 4);
 	string numStr2 = line.substr(5, 4);
