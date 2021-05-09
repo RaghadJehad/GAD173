@@ -23,9 +23,7 @@ bool Example::start()
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
 	map.Load();
-	animator.Init();
-	animator.LoadTexture();
-	animator.StartAnimation(sf::Vector2i(0, 1), sf::Vector2i(6, 0), 120);
+
 	/*string line = "GAME OVER MUSTAFA HAHA xD !!!!!";
 	string numStr1 = line.substr(0, 4);
 	string numStr2 = line.substr(5, 4);
@@ -41,7 +39,10 @@ bool Example::start()
 	std::cout << numStr6 << std::endl;
 	std::cout << numStr7 << std::endl;
 	*/
-
+	for (size_t i = 0; i < Map_Size; i++)
+	{
+		map.tile[i].LoadTexture();
+	}
 	return true;
 }
 
@@ -57,18 +58,22 @@ void Example::update(float deltaT)
 	{ 
 		m_running = false;
 	}
-	if(ImGui::ImageButton(*map.blockRTexture, sf::Vector2f(35,35)))
+	if(ImGui::ImageButton(map.tile[0].BlueSprite, sf::Vector2f(35,35)))
 	{
 		map.chosenTileID = 1;
 	}
-	if (ImGui::ImageButton(*map.blockBTexture, sf::Vector2f(35, 35)))
+	if (ImGui::ImageButton(map.tile[0].RedSprite, sf::Vector2f(35, 35)))
 	{
 		map.chosenTileID = 2;
 	}
-	if (ImGui::ImageButton(*map.blockGTexture, sf::Vector2f(35, 35)))
+	if (ImGui::ImageButton(map.tile[0].YellowSprite, sf::Vector2f(35, 35)))
 	{
 		map.chosenTileID = 3;
 	}
+	/*if (ImGui::ImageButton(*map.blockGTexture, sf::Vector2f(35, 35)))
+	{
+		map.chosenTileID = 3;
+	}*/
 	if (ImGui::Button("Save"))
 	{  
 		SaveLoad::Save("map.txt", map.map, 21, 21);
@@ -90,12 +95,16 @@ void Example::update(float deltaT)
 		int mouseOnCellY = (mousePosition.y - Grid_OFFSET_Y) / Cell_Height;
 		int i = mouseOnCellX + mouseOnCellY * 21;
 
-		if (map.chosenTileID == 1) 
+		map.map[i] = map.chosenTileID;
+		map.tile[i].chosenTileID = map.chosenTileID;
+		map.Load();
+
+		/*if (map.chosenTileID == 1) 
 		{
-			map.tiles[i].setTexture(*map.blockRTexture);
+			map.tile[i].LoadTexture();
 			map.map[i] = 1;
 		}
-		if (map.chosenTileID == 2)
+		/*if (map.chosenTileID == 2)
 		{
 			map.tiles[i].setTexture(*map.blockBTexture);
 			map.map[i] = 2;
@@ -104,11 +113,12 @@ void Example::update(float deltaT)
 		{
 			map.tiles[i].setTexture(*map.blockGTexture);
 			map.map[i] = 3;
-		}
+		}*/
 	
-		std::cout << mouseOnCellX << " " << mouseOnCellY << std::endl;
+		//std::cout << mouseOnCellX << " " << mouseOnCellY << std::endl;
 	}
-	animator.Update();
+	map.Update();
+
 }
 	
 
@@ -116,11 +126,8 @@ void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
 	grid.Render(m_window);
-	animator.Render(m_window);
-	for (size_t i = 0; i < Map_Size; i++)
-	{
-		m_window.draw(map.tiles[i]);
-	}
+	//animator.Render(m_window);
+	map.Render(m_window);
 }
 
 void Example::cleanup()

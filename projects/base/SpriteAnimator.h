@@ -4,10 +4,10 @@
 class SpriteAnimator
 {
 private:
-	sf::Texture* brickAnimation;
-	sf::Sprite BreakoutSheet;
+	sf::Texture* blueBrick;
+	sf::Texture* yellowBrick;
+	sf::Texture* redBrick;
 	sf::Clock clock;
-	
 	sf::Vector2i startFrame; //vector2i for int
 	sf::Vector2i endFrame;
 	int speed;
@@ -15,13 +15,16 @@ private:
 	bool startAnimation = false;
 
 public:
+	sf::Sprite BlueSprite;
+	sf::Sprite YellowSprite;
+	sf::Sprite RedSprite;
+	int chosenTileID = 0;
 	SpriteAnimator();
 	~SpriteAnimator();
 	void Update();
 	void Render(sf::RenderWindow& window);
-	void Init();
 	void LoadTexture();
 	void StartAnimation(sf::Vector2i startFrame, sf::Vector2i endFrame, int speed);
-
+	
 };
 
