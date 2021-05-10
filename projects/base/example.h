@@ -16,7 +16,7 @@ public:
 	virtual void cleanup();
 	static Example &inst();
 
-	sf::Sprite *m_backgroundSprite;
+	sf::Sprite* m_backgroundSprite = nullptr;
 	Map map;
 	Grid grid;
 	SpriteAnimator animator;

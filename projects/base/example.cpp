@@ -1,9 +1,10 @@
 #include "example.h"
 #include <string>
 
+
 using namespace std;
 
-Example::Example(): App()
+Example::Example() : App()
 {
 }
 
@@ -128,6 +129,7 @@ void Example::render()
 	grid.Render(m_window);
 	//animator.Render(m_window);
 	map.Render(m_window);
+	
 }
 
 void Example::cleanup()
