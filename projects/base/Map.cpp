@@ -23,7 +23,7 @@ void Map::Load()
 			
 			if (map[i] == 1)
 			{
-				//tile[i].chosenTileID = 1;
+				tile[i].chosenTileID = 1;
 				tile[i].BlueSprite.setPosition(sf::Vector2f(Grid_OFFSET_X + x * Cell_Width,
 					Grid_OFFSET_Y + y * Cell_Height));
 				
@@ -32,14 +32,14 @@ void Map::Load()
 			}
 			if (map[i] == 2)
 			{
-				//tile[i].chosenTileID = 2;
+				tile[i].chosenTileID = 2;
 				tile[i].RedSprite.setPosition(sf::Vector2f(Grid_OFFSET_X + x * Cell_Width,
 					Grid_OFFSET_Y + y * Cell_Height));
 			}
 			
 			if (map[i] == 3)
 			{
-				//tile[i].chosenTileID = 3;
+				tile[i].chosenTileID = 3;
 				tile[i].YellowSprite.setPosition(sf::Vector2f(Grid_OFFSET_X + x * Cell_Width,
 					Grid_OFFSET_Y + y * Cell_Height));
 			}
