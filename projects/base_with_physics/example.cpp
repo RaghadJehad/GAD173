@@ -1,4 +1,6 @@
 #include "example.h"
+#include "MainMenu.h"
+#include "Level1.h"
 
 Example::Example(): App()
 {
@@ -18,9 +20,12 @@ bool Example::start()
 {
 	// Initialise the physics system. Set the default gravity to 9.8m/s^2 down.
 
-	m_backgroundSprite = kage::TextureManager::getSprite("data/sky.jpg");
-	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
-	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
+	//m_backgroundSprite = kage::TextureManager::getSprite("data/sky.jpg");
+	//sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
+	//m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
+	sceneManager.AddScene(new MainMenu());
+	sceneManager.AddScene(new Level1());
+
 	return true;
 }
 
@@ -33,8 +38,16 @@ void Example::update(float deltaT)
 	{
 		m_running = false;
 	}
-
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+	{
+		sceneManager.LoadScene(1);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+	{
+		sceneManager.LoadScene(0);
+	}
 	sceneManager.Update();
+	
 	/*ImGui::Begin("Kage2D");
 	if(ImGui::Button("Exit"))
 	{ 

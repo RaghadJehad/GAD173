@@ -1,5 +1,4 @@
 #pragma once
-
 #include "app.h"
 #include "SceneManager.h"
 

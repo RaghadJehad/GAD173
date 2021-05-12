@@ -1,7 +1,9 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include <iostream>
 class Scene
 {
+private:
 	bool isRunning; //checking if the scene is running or not
 public:
 	Scene();

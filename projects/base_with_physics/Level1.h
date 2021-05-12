@@ -1,12 +1,11 @@
 #pragma once
 #include "Scene.h"
 
-class MainMenu : public Scene //inhereting from scene for menu to become a scene 
-								//to add it to the list of scenes
+class Level1 : public Scene
 {
-public: 
-	MainMenu();
-	~MainMenu();
+public:
+	Level1();
+	~Level1();
 
 	void Load() override;
 	void Init() override;
